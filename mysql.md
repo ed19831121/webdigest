@@ -1,20 +1,23 @@
 my.ini 		windows
 my.cnf		unix
 
+---
+
 innodb_page_size=16384
 FILE_BLOCK_SIZE	=8192
 KEY_BLOCK_SIZE	=FILE_BLOCK_SIZE/1024=8
 KEY_BLOCK_SIZE 	= 1/2 * innodb_page_size
+
 ---
-1. CREATE 	TABLESPACE `ts2` 
-2. ADD 	DATAFILE 'ts2.ibd' 
-3. FILE_BLOCK_SIZE = 8192 
-4. Engine=InnoDB;
+1. CREATE 	TABLESPACE 	`ts2` 
+2. ADD 		DATAFILE 	'ts2.ibd' 
+3. FILE_BLOCK_SIZE 	= 8192 
+4. Engine 		= InnoDB;
 ---
-CREATE TABLE t4 (c1 INT PRIMARY KEY) 
-TABLESPACE ts2 
-ROW_FORMAT=COMPRESSED 
-KEY_BLOCK_SIZE=8;
+1. CREATE TABLE t4 (c1 INT PRIMARY KEY) 
+2. TABLESPACE ts2 
+3. ROW_FORMAT=COMPRESSED 
+4. KEY_BLOCK_SIZE=8;
 ---
 
 tablespace
@@ -33,3 +36,11 @@ tablespace
 		dynamic
 
 SET GLOBAL innodb_file_format=Barracuda;
+
+---
+row_format=
+	compact
+	redundant
+	compressed
+	dynamic
+
